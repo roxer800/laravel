@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <p>ჩემი ვაკანსიები</p>
+    @foreach ($vacancy as  $vacansie)
+
+                <div>
+                    <hr>
+                    <div>
+                        <h4>ვაკანსიის სახელი</h4>
+                        <p>{{$vacansie['name']}}</p>
+                    </div>
+                    <div>
+                        <h4>ვაკანსიის აღწერა</h4>
+                        <p>{{$vacansie['description']}}</p>
+                    </div>
+                    <hr>
+                </div>
+                <button  type="button" class="btn btn-primary" onclick="redirectToVacansie({{ $vacansie->id }})">ვაკანსიის ნახვა</button>
+               
+                @endforeach
+</body>
+<script>
+    function   redirectToVacansie(vacancieId){
+          window.location.href = "{{ url('/vacancys') }}/" + vacancieId;
+          }
+</script>
+</html>
